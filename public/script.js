@@ -4,11 +4,12 @@ $(document).ready(function() {
   $('#bob').on('click', function() {
     console.log('click');
 
-    var testData = {test: 'test'};
+    var bobData = {bob: 'bob'};
+
     $.ajax({
       type: 'POST',
       url: '/bob',
-      data: testData,
+      data: bobData,
       success: function(response) {
         console.log('server said:', response);
       }

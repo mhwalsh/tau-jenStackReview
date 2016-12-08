@@ -4,6 +4,9 @@ var bodyParser = require('body-parser');
 
 var app = express();
 
+// our bobs
+var bobs = 0;
+
 // make these file publicly available
 app.use(express.static('public'));
 app.use(bodyParser.urlencoded({extended: false}));
@@ -16,7 +19,12 @@ app.get('/', function(req, res) {
 app.post('/bob', function(req, res) {
   console.log('inside the post route');
   console.log('req.body', req.body);
-  res.sendStatus(200); // OK
+  bobs++;
+  // res.sendStatus(200); // OK
+  var bobTransferObject = {
+    howMany: bobs
+  };
+  res.send(bobTransferObject);
 });
 
 app.listen(3001, function() {
